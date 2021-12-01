@@ -4,7 +4,6 @@ import Section1 from "../layouts/home_layouts/Section1";
 import Section2 from "../layouts/home_layouts/Section2";
 import Section3 from "../layouts/home_layouts/Section3";
 import Section4 from "../layouts/home_layouts/Section4";
-// import Section4 from "../layouts/home_layouts/Section4";
 import Section5 from "../layouts/home_layouts/Section5";
 import Section6 from "../layouts/home_layouts/Section6";
 

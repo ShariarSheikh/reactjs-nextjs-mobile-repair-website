@@ -18,7 +18,7 @@ const HeaderLeft = ({ openMenu, setOpenMenu }) => {
       <div className="relative flex flex-row items-center h-full cursor-pointer">
         <h1 className="text-xl font-bold text-black ml-6 xl:ml-0">
           <Link href="/" passHref>
-            <a>MobileX</a>
+            <a>MobileR</a>
           </Link>
         </h1>
       </div>

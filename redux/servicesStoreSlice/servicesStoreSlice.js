@@ -4,9 +4,7 @@ import axios from "axios";
 export const servicesStoreFetch = createAsyncThunk(
   "servicesStore/servicesStoreFetch",
   async () => {
-    const response = await axios.get(
-      process.env.REACT_APP_GET_SERVICES_STORE
-    );
+    const response = await axios.get("https://stormy-woodland-67379.herokuapp.com/api/service-stores/get");
     return response.data.servicesStore;
   }
 );

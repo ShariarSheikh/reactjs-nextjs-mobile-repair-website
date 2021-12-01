@@ -128,7 +128,7 @@ export const DropdownCart = ({ AiOutlineShoppingCart }) => {
     >
       <AiOutlineShoppingCart className="text-black mr-4 text-2xl cursor-pointer" />
       <div
-        className="w-72 h-52  rounded-sm text-black absolute right-0 top-14 shadow-xl bg-white pt-2 px-3"
+        className="w-72 h-52  rounded-sm text-black absolute right-0 top-8 shadow-xl bg-white pt-2 px-3"
         hidden={!isOpenMenu}
         onClick={(e) => e.stopPropagation()}
       >

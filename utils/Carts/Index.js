@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { AiFillStar, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
-import { useHistory } from "react-router";
+import { useRouter } from "next/router"; 
+import Image from 'next/image'
 
 export const StoreCart = ({ location }) => {
-  const history = useHistory();
+  const router = useRouter();
   return (
     <div
-      onClick={() => history.push(`/store/${location.locationName}`)}
+      onClick={() => router.push(`/store/${location.locationName}`)}
       key={location._id}
       className="relative bg-blue-500 shadow-md pb-3 sm:w-2/5 max-w-sm w-11/12 sm:mr-4 mb-6 cursor-pointer rounded"
     >
@@ -33,14 +34,16 @@ export const ReviewSliderCart = ({ userReviews }) => {
   const [dislike, setDislike] = useState(3);
 
   return (
-    <div className="w-full h-full overflow-hidden bg-white flex justify-start flex-col p-8 rounded cursor-pointer">
-      <div className="flex flex-row mb-4">
-        <img
-          className="w-14 h-14 object-cover rounded-full bg-white border mr-4"
+    <div className="w-full h-full min-h-[308px] overflow-hidden bg-white flex justify-between flex-col p-8 rounded cursor-pointer">
+      <div className="flex flex-row pb-4">
+        <Image
+          className="object-cover rounded-full bg-white border relative"
           src={userReviews.photo}
+          width={54}
+          height={54}
           alt="reviews"
         />
-        <div className="flex flex-col">
+        <div className="flex flex-col ml-5">
           <h1 className="text-gray-500 font-bold mb-2">{userReviews.name}</h1>
           <div className="flex">
             {Array(rating)
@@ -53,12 +56,12 @@ export const ReviewSliderCart = ({ userReviews }) => {
       </div>
       <div>
         <h1 className="text-gray-500 font-medium mb-2">{userReviews.title}</h1>
-        <p className="text-gray-500 font-sm line-clamp-4">
+        <p className="text-gray-500 font-sm line-clamp-3">
           {userReviews.description}
         </p>
         <small className="text-gray-500 font-sm">{userReviews.posted}</small>
       </div>
-      <div className=" w-full flex flex-row absolute bottom-10 2xl:bottom-5">
+      <div className=" w-full flex flex-row mt-5">
         <div className="flex items-center">
           <AiOutlineLike
             className="text-gray-400 text-2xl z-50 hover:text-gray-700"

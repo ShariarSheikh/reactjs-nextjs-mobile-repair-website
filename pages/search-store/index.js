@@ -1,13 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Header from "../components/Header/Header";
+import Header from "../../components/Header/Header";
 
 const Index = () => {
   const router = useRouter();
   const { store } = useRouter().query;
 
-  console.log(store);
   return (
     <div className="w-full bg-[#ffffff]">
       <Head>

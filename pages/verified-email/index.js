@@ -1,5 +1,3 @@
-import Protected from "../HOC/Protected";
-
 const Index = () => {
   return (
     <div className="text-center h-screen w-full flex flex-col items-center">
@@ -8,4 +6,4 @@ const Index = () => {
   );
 };
 
-export default Protected(Index);
+export default Index;

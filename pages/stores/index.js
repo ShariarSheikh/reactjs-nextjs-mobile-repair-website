@@ -1,8 +1,8 @@
 import axios from "axios";
 import Head from "next/head";
-import Header from "../components/Header/Header";
-import LocationsFeed from "../layouts/stores_layouts/LocationsFeed";
-import StoresHero from "../layouts/stores_layouts/StoresHero";
+import Header from "../../components/Header/Header";
+import LocationsFeed from "../../layouts/stores_layouts/LocationsFeed";
+import StoresHero from "../../layouts/stores_layouts/StoresHero";
 
 const Stores = ({ data }) => {
   return (

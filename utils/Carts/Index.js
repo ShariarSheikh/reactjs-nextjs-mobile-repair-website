@@ -1,24 +1,32 @@
+import Link from "next/link";
 import { useState } from "react";
 import { AiFillStar, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
-import { useRouter } from "next/router"; 
-import Image from 'next/image'
+import Image from "next/image";
 
 export const StoreCart = ({ location }) => {
-  const router = useRouter();
   return (
-    <div
-      onClick={() => router.push(`/store/${location.locationName}`)}
-      key={location._id}
-      className="relative bg-blue-500 shadow-md pb-3 sm:w-2/5 max-w-sm w-11/12 sm:mr-4 mb-6 cursor-pointer rounded"
-    >
-      <img className="w-full h-52" src={location.photo} alt="locations" />
-      <div className="pl-3">
-        <h1 className="text-white text-3xl mt-3">{location.locationName}</h1>
-        <p className="text-gray-200  mt-2 font-normal">
-          {location.description}
-        </p>
+    <Link href={`/store/${location._id}`} passHref>
+      <div
+        key={location._id}
+        className="relative bg-blue-500 shadow-md pb-3 sm:w-2/5 max-w-sm w-11/12 sm:mr-4 mb-6 cursor-pointer rounded p-6"
+      >
+        <div className="w-full h-52 relative">
+          <Image
+            className="w-full"
+            layout="fill"
+            src={location.photo}
+            alt="locations"
+          />
+        </div>
+
+        <div className="pl-3">
+          <h1 className="text-white text-3xl mt-3">{location.locationName}</h1>
+          <p className="text-gray-200  mt-2 font-normal">
+            {location.description}
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

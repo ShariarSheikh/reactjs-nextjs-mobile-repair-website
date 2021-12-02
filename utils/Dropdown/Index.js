@@ -1,8 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { totalServicesList } from "../../products";
+import Cookies from "universal-cookie";
+import { logOutUser } from "../../redux/userSlice/userSlice";
+
+const cookies = new Cookies();
 
 export const DropdownServices = ({ setDropdown }) => {
   return (
@@ -40,9 +45,7 @@ export const DropdownServices = ({ setDropdown }) => {
   );
 };
 
-export const DropdownProfileMenu = ({ img }) => {
-  const { user } = useSelector((state) => state.user);
-
+export const DropdownProfileMenu = ({ img, email, isAdmin, name }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -53,22 +56,22 @@ export const DropdownProfileMenu = ({ img }) => {
   }, [isOpenMenu]);
 
   const clickHandler = (text) => {
-    if (process.env.REACT_APP_ADMIN_EMAIL === user?.email) {
+    if (process.env.REACT_APP_ADMIN_EMAIL === email) {
       //admin login
       text === "Profile" && router.push("/admin");
       text === "Setting" && router.push("/admin/setting");
       text === "Logout" && dispatch(removeUser());
       text === "Logout" && router.push("/");
-    } else if (user?.isAdmin === false) {
+    } else if (isAdmin === false) {
       //if normal user login
       text === "Profile" && router.push("/user");
       text === "Setting" && router.push("/user/setting");
       text === "Logout" && dispatch(removeUser());
       text === "Logout" && router.push("/");
-    } else if (user?.email) {
+    } else if (email) {
       text === "Profile" && router.push("/user");
       text === "Setting" && router.push("/user/setting");
-      text === "Logout" && dispatch(removeUser());
+      text === "Logout" && dispatch(logOutUser());
       text === "Logout" && router.push("/");
     }
     setIsOpenMenu(false);
@@ -81,11 +84,20 @@ export const DropdownProfileMenu = ({ img }) => {
       onBlur={() => setIsOpenMenu(false)}
       tabIndex={0}
     >
-      <img
-        className="inline object-cover w-10 h-10 mr-2 rounded-full"
-        src={img}
-        alt="Profile"
-      />
+      {img ? (
+        <Image
+          width={40}
+          height={40}
+          className="inline object-cover mr-2 rounded-full overflow-hidden"
+          src={img}
+          alt="Profile"
+        />
+      ) : (
+        <div className="bg-blue-400 w-10 h-10 mr-2 rounded-full overflow-hidden text-white font-semibold flex justify-center items-center">
+          {name[0]}
+        </div>
+      )}
+
       <ul
         className="w-52 rounded-sm text-black absolute right-0 top-14 shadow-lg bg-white pt-2 px-3"
         hidden={!isOpenMenu}

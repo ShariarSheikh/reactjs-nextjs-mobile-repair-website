@@ -34,12 +34,3 @@
   background: rgb(61, 61, 61); /* Optional: just make scrollbar invisible */
 }
 
-.style_scroll_bar::-webkit-scrollbar-thumb {
-  background: #868686;
-}
-
-.bg-glass-blur-chat {
-  background: rgba(255, 255, 255, 0.027);
-  backdrop-filter: blur(150px);
-}
-

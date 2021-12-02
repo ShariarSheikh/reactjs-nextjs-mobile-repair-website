@@ -10,6 +10,7 @@ import Section5 from "../layouts/home_layouts/Section5";
 import Section6 from "../layouts/home_layouts/Section6";
 
 const Home = () => {
+
   return (
     <div className="w-full bg-[#ffffff] relative">
       <Head>

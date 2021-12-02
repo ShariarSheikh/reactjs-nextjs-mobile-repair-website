@@ -1,8 +1,17 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { modalSignup } from "../../../redux/userSlice/userSlice";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  closeModal,
+  joinModal,
+  loginUser,
+  modalSignup,
+} from "../../../redux/userSlice/userSlice";
+import { LoadingButton } from "../../../utils/Buttons/LoadingBtn";
+import { LoginButton } from "../../../utils/Buttons/LoginBtn";
 
 const Login = () => {
+  const userLogin = useSelector(joinModal);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,12 +27,24 @@ const Login = () => {
         `Please enter your ${!email && "email"} ${!password && "password"}`
       );
     } else {
-      alert(user);
+      dispatch(loginUser(user));
     }
   };
 
+  useEffect(() => {
+    if (userLogin.status === "success") {
+      setEmail("");
+      setPassword("");
+      dispatch(closeModal());
+    }
+  }, [userLogin.status, dispatch]);
+
   return (
     <form onSubmit={onSubmit} className="w-full max-w-[360px] m-auto mt-9 pb-8">
+      {userLogin.status === "rejected" && (
+        <p className="text-red-500 text-sm">{userLogin.error}</p>
+      )}
+
       <div className="flex flex-col mb-4">
         <label htmlFor="Email">Email</label>
         <input
@@ -48,7 +69,7 @@ const Login = () => {
         />
       </div>
 
-      {false ? <LoadingButton /> : <LoginButton />}
+      {userLogin.status === "pending" ? <LoadingButton /> : <LoginButton />}
 
       <div className="w-full mt-6 text-gray-500 font-medium text-center">
         <p
@@ -66,26 +87,3 @@ const Login = () => {
 };
 
 export default Login;
-
-const LoginButton = () => {
-  return (
-    <button
-      className="w-full mt-5 h-10 rounded-sm cursor-pointer
-     bg-black text-yellow-400 font-medium active:scale-105 duration-200"
-      type="submit"
-    >
-      Login
-    </button>
-  );
-};
-
-const LoadingButton = () => {
-  return (
-    <button
-      className="w-full mt-5 h-10 rounded-sm cursor-wait
-     bg-gray-400 text-gray-800 font-medium active:scale-105 duration-200"
-    >
-      Loading...
-    </button>
-  );
-};

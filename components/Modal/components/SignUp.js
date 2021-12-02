@@ -1,8 +1,16 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { modalLogin } from "../../../redux/userSlice/userSlice";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  closeModal,
+  joinModal,
+  modalLogin,
+  signUpUser,
+} from "../../../redux/userSlice/userSlice";
+import { LoadingButton } from "../../../utils/Buttons/LoadingBtn";
+import { SignUpButton } from "../../../utils/Buttons/SignUpBtn";
 
 const SignUp = () => {
+  const loginUser = useSelector(joinModal);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -21,12 +29,24 @@ const SignUp = () => {
         } ${!number && "number"}`
       );
     } else {
-      alert(user);
+      dispatch(signUpUser(user));
     }
   };
 
+  useEffect(() => {
+    if (loginUser.status === "success") {
+      setEmail("");
+      setPassword("");
+      setName("");
+      setNumber("");
+      dispatch(closeModal());
+    }
+  }, [loginUser.status, dispatch]);
+
   return (
     <form onSubmit={onSubmit} className="w-full max-w-[360px] m-auto mt-9 pb-8">
+      {loginUser.status === "rejected" && <p className="text-red-500 text-sm">{loginUser.error}</p>}
+
       <div className="flex flex-col mb-4">
         <label htmlFor="Name">Name</label>
         <input
@@ -73,7 +93,7 @@ const SignUp = () => {
         />
       </div>
 
-      {false ? <LoadingButton /> : <LoginButton />}
+      {loginUser.status === "pending" ? <LoadingButton /> : <SignUpButton />}
 
       <div className="w-full mt-6 text-gray-500 font-medium text-center">
         <p
@@ -88,26 +108,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-const LoginButton = () => {
-  return (
-    <button
-      className="w-full mt-5 h-10 rounded-sm cursor-pointer
-     bg-black text-yellow-400 font-medium active:scale-105 duration-200"
-      type="submit"
-    >
-      SignUp
-    </button>
-  );
-};
-
-const LoadingButton = () => {
-  return (
-    <button
-      className="w-full mt-5 h-10 rounded-sm cursor-wait
-     bg-gray-400 text-gray-800 font-medium active:scale-105 duration-200"
-    >
-      Loading...
-    </button>
-  );
-};

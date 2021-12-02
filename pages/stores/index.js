@@ -1,6 +1,7 @@
 import axios from "axios";
 import Head from "next/head";
 import Header from "../../components/Header/Header";
+import Modal from "../../components/Modal/index";
 import LocationsFeed from "../../layouts/stores_layouts/LocationsFeed";
 import StoresHero from "../../layouts/stores_layouts/StoresHero";
 
@@ -12,6 +13,7 @@ const Stores = ({ data }) => {
         <meta name="description" content="chat application" />
       </Head>
       <Header />
+      <Modal />
 
       <main className="w-full min-h-screen">
         <div

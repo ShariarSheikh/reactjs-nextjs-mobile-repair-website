@@ -33,6 +33,10 @@ export const store = configureStore({
     servicesStoreUpdate: servicesStoreUpdateSlice,
     //service store action end
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 //repair devices data calling

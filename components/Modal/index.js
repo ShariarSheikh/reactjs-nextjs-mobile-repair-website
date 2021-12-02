@@ -1,8 +1,9 @@
+import dynamic from "next/dynamic";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal, joinModal } from "../../redux/userSlice/userSlice";
 import { AiOutlineClose } from "react-icons/ai";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+const Login = dynamic(() => import("./components/Login"));
+const SignUp = dynamic(() => import("./components/SignUp"));
 
 const Index = () => {
   const {
@@ -24,10 +25,10 @@ const Index = () => {
       <div className="mt-28 max-w-[500px] w-full h-auto relative overflow-hidden">
         <div className="px-6 w-full min-h-[500px] bg-white rounded-lg absolute overflow-hidden">
           <div className="relative w-full h-full">
-            <div className="w-16 h-16 m-auto -mt-4 rounded-full overflow-hidden flex justify-center items-center bg-gray-50">
+            <div className="w-16 h-16 m-auto -mt-4 rounded-full overflow-hidden flex justify-center items-center bg-[#a5a50d]">
               <AiOutlineClose
                 onClick={closeHandler}
-                className="cursor-pointer text-gray-500 top-5 w-6 h-6 mt-3"
+                className="cursor-pointer text-white top-5 w-6 h-6 mt-3"
               />
             </div>
 

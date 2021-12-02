@@ -1,22 +1,31 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Cookies from "universal-cookie";
+
 import {
   AiOutlineBell,
   AiOutlineSearch,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { useDispatch } from "react-redux";
-import { modalLogin, modalSignup } from "../../../redux/userSlice/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  joinModal,
+  modalLogin,
+  modalSignup,
+} from "../../../redux/userSlice/userSlice";
 import {
   DropdownCart,
   DropdownProfileMenu,
 } from "../../../utils/Dropdown/Index";
 
+const cookies = new Cookies();
+
 //header right component
 const HeaderRight = () => {
+  const loginUser = useSelector(joinModal);
+  const [user, setUser] = useState({});
   const [search, setSearch] = useState("");
   const router = useRouter();
-
   const dispatch = useDispatch();
 
   const storeSearch = (e) => {
@@ -24,6 +33,10 @@ const HeaderRight = () => {
       search && router.push(`/stores?store=${search}`);
     }
   };
+
+  useEffect(() => {
+    setUser(cookies.get("u"));
+  }, [loginUser]);
 
   return (
     <div className="h-full w-full xl:w-auto">
@@ -47,16 +60,17 @@ const HeaderRight = () => {
           <DropdownCart AiOutlineShoppingCart={AiOutlineShoppingCart} />
         </div>
 
-        {false ? (
+        {user?.email ? (
           <>
             <div className="cursor-pointer flex flex-row items-center text-black font-medium rounded">
               <AiOutlineBell className="text-black mr-1 w-6 h-6 cursor-pointer text-lg" />
             </div>
             <div className="ml-4 cursor-pointer flex flex-row items-center">
               <DropdownProfileMenu
-                img={
-                  "https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                }
+                img={user?.profileImg}
+                email={user?.email}
+                isAdmin={user?.isAdmin}
+                name={user?.name}
               />
             </div>
           </>

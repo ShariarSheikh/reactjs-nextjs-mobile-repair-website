@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "../../components/Header/Header";
+import Modal from "../../components/Modal/index";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
@@ -10,18 +11,6 @@ const Store = ({ store }) => {
   const { id } = useRouter().query;
 
   const [storeOpen, setStoreOpen] = useState(false);
-  const [locationData, setLocationData] = useState();
-
-  // useEffect(() => {
-  //   if (location) {
-  //     const data = servicesStore.filter(
-  //       (x) => x.locationName.toLowerCase() === location.toLowerCase()
-  //     );
-  //     setLocationData(data[0]);
-  //   } else {
-  //     setLocationData();
-  //   }
-  // }, [location, servicesStore]);
 
   setInterval(() => {
     const now = new Date().getHours();
@@ -39,6 +28,7 @@ const Store = ({ store }) => {
         <meta id="description" content="chat application" />
       </Head>
       <Header />
+      <Modal />
 
       <main className="min-h-screen max-w-[1366px] m-auto">
         <section className="w-full">

@@ -3,7 +3,7 @@ import { ReviewSlider } from "../../utils/ReviewSlider/ReviewSlider";
 
 const Section6 = () => {
   return (
-    <div className="w-full 2xl:max-w-7xl xl:max-w-7xl xl:mt-7 lg:w-full m-auto bg-[#f5f5dc] pt-4 pl-3 mb-10 pb-7">
+    <div className="w-full 2xl:max-w-7xl xl:max-w-7xl xl:mt-7 lg:w-full m-auto bg-[#f5f5dc] pt-4 pl-3 pr-3 mb-10 pb-7">
       <h1 className="text-2xl text-start font-bold mb-5 text-blue-500">
         Reviews
       </h1>

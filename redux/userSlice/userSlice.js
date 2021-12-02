@@ -1,21 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const userSlice = createSlice({
-  name: "user",
+export const modalSlice = createSlice({
+  name: "modal",
   initialState: {
-    user: null,
+    modal: { isOpen: false, type: "login" },
   },
 
   reducers: {
-    getUser: (state, action) => {
-      state.user = action.payload;
+    modalLogin: (state, action) => {
+      state.modal.isOpen = true;
+      state.modal.type = "login";
     },
-    removeUser: (state, action) => {
-      state.user = null;
+    modalSignup: (state, action) => {
+      state.modal.isOpen = true;
+      state.modal.type = "signup";
+    },
+    closeModal: (state, action) => {
+      state.modal.isOpen = false;
     },
   },
 });
 
-export const { getUser, removeUser } = userSlice.actions;
+export const { modalLogin, modalSignup, closeModal } = modalSlice.actions;
 
-export default userSlice.reducer;
+export const joinModal = (state) => state.joinModal;
+
+export default modalSlice.reducer;

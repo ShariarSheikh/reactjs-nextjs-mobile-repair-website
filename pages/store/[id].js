@@ -37,7 +37,6 @@ const Store = ({ store }) => {
       <Head>
         <title>Store - {store?.locationName} Repair Mobiles</title>
         <meta id="description" content="chat application" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
 

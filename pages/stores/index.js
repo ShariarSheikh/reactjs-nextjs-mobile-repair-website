@@ -10,7 +10,6 @@ const Stores = ({ data }) => {
       <Head>
         <title>Stores Repair Mobiles</title>
         <meta name="description" content="chat application" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
 

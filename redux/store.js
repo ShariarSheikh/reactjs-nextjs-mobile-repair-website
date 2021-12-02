@@ -12,13 +12,13 @@ import servicesStoreDeleteSlice from "./servicesStoreSlice/servicesStoreDeleteSl
 import servicesStoreSlice, {
   servicesStoreFetch,
 } from "./servicesStoreSlice/servicesStoreSlice";
-import  servicesStoreUpdateSlice  from "./servicesStoreSlice/updateServicesStoreSlice";
-//user slice
-import userSlice from "./userSlice/userSlice";
+import servicesStoreUpdateSlice from "./servicesStoreSlice/updateServicesStoreSlice";
+//model box slice
+import modelSlice from "./userSlice/userSlice";
 
 export const store = configureStore({
   reducer: {
-    user: userSlice,
+    joinModal: modelSlice,
     //repair device action start
     repairDevicesData: repairDevicesSlice,
     repairDevicesCreate: createRepairDeviceSlice,
@@ -29,8 +29,8 @@ export const store = configureStore({
     //service store action start
     servicesStore: servicesStoreSlice,
     servicesStoreCreate: createServiceStoreSlice,
-    servicesStoreDelete:servicesStoreDeleteSlice,
-    servicesStoreUpdate:servicesStoreUpdateSlice
+    servicesStoreDelete: servicesStoreDeleteSlice,
+    servicesStoreUpdate: servicesStoreUpdateSlice,
     //service store action end
   },
 });

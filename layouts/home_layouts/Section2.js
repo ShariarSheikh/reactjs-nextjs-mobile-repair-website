@@ -23,7 +23,7 @@ const Section2 = () => {
           src="https://images.unsplash.com/photo-1576613109753-27804de2cba8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
           alt="personRepairing"
         />
-        <div className="flex items-center justify-center 4 z-30 w-full px-8">
+        <div className="flex items-center justify-center 4 z-10 w-full px-8">
           <input
             className="outline-none py-4 px-3 rounded-sm text-xl"
             type="text"

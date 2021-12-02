@@ -12,7 +12,6 @@ const Index = () => {
       <Head>
         <title>Search Store - {store && store}</title>
         <meta name="description" content="chat application" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
 

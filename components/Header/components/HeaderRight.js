@@ -5,7 +5,8 @@ import {
   AiOutlineSearch,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { modalLogin, modalSignup } from "../../../redux/userSlice/userSlice";
 import {
   DropdownCart,
   DropdownProfileMenu,
@@ -14,8 +15,9 @@ import {
 //header right component
 const HeaderRight = () => {
   const [search, setSearch] = useState("");
-  const { user } = useSelector((state) => state.user);
   const router = useRouter();
+
+  const dispatch = useDispatch();
 
   const storeSearch = (e) => {
     if (e.keyCode === 13) {
@@ -45,7 +47,7 @@ const HeaderRight = () => {
           <DropdownCart AiOutlineShoppingCart={AiOutlineShoppingCart} />
         </div>
 
-        {user ? (
+        {false ? (
           <>
             <div className="cursor-pointer flex flex-row items-center text-black font-medium rounded">
               <AiOutlineBell className="text-black mr-1 w-6 h-6 cursor-pointer text-lg" />
@@ -61,13 +63,13 @@ const HeaderRight = () => {
         ) : (
           <>
             <div
-              onClick={() => router.push("/login")}
+              onClick={() => dispatch(modalLogin())}
               className="cursor-pointer flex flex-row items-center text-black font-medium rounded"
             >
               LogIn
             </div>
             <div
-              onClick={() => router.push("/signup")}
+              onClick={() => dispatch(modalSignup())}
               className="ml-4 cursor-pointer flex flex-row items-center text-black font-medium rounded outline-none"
             >
               Register

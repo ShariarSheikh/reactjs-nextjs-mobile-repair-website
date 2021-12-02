@@ -6,7 +6,6 @@ const Profile = () => {
       <Head>
         <title>Profile - </title>
         <meta name="description" content="chat application" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="w-full">

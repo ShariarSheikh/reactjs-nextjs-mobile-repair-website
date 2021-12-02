@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineBell, AiOutlineShoppingCart } from "react-icons/ai";
-import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { totalServicesList } from "../../products";
 import { DropdownCart, DropdownProfileMenu } from "../../utils/Dropdown/Index";
 
 const HamburgerMenu = ({ openMenu }) => {
   const [openService, setOpenService] = useState(false);
-  const { user } = useSelector((state) => state.user);
 
   const router = useRouter();
 
@@ -40,7 +38,7 @@ const HamburgerMenu = ({ openMenu }) => {
       >
         <ul className="w-full h-auto p-0 mt-16 text-center">
           <div className="w-full flex flex-row items-center justify-center mb-8">
-            {user && (
+            {false && (
               <>
                 <div className="cursor-pointer flex flex-row items-center text-black font-medium rounded ">
                   <AiOutlineBell className="text-black mr-6 w-6 h-6 cursor-pointer text-lg" />
@@ -92,7 +90,7 @@ const HamburgerMenu = ({ openMenu }) => {
             Support
           </li>
 
-          {!user && (
+          {!false && (
             <>
               <div
                 onClick={() => history.push("/login")}

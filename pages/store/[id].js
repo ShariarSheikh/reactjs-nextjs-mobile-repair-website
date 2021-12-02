@@ -66,7 +66,7 @@ const Store = ({ store }) => {
               >
                 {storeOpen ? "Open Now" : "Closed"}
               </button>
-              <button className="bg-blue-700 text-white py-2 px-2 md:px-7 rounded-2xl font-roboto active:scale-105 duration-200">
+              <button className="bg-blue-500 text-white py-2 px-2 md:px-7 rounded-2xl font-roboto active:scale-105 duration-200">
                 Call Store Assistant
               </button>
             </div>

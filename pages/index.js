@@ -13,17 +13,16 @@ const Home = ({ data }) => {
       <Head>
         <title>Repair Mobiles</title>
         <meta name="description" content="chat application" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
 
       <main className="w-full min-h-screen">
-        <Section1/>
-        <Section2/>
-        <Section3/>
-        <Section4/>
-        <Section5/>
-        <Section6/>
+        <Section1 />
+        <Section2 />
+        <Section3 />
+        <Section4 />
+        <Section5 />
+        <Section6 />
       </main>
     </div>
   );

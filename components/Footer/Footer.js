@@ -1,18 +1,10 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
 
 const Footer = () => {
-  const location = useLocation();
   return (
     <div className="w-full h-auto bg-indigo-900">
-      <div
-        className={`flex flex-col max-w-5xl w-full m-auto h-auto pt-12 ${
-          location.pathname === "/login" || location.pathname === "/signup"
-            ? `hidden`
-            : `block`
-        }`}
-      >
+      <div className="flex flex-col max-w-5xl w-full m-auto h-auto pt-12">
         {/* all links container start */}
         <div className="flex flex-row justify-between flex-wrap px-3">
           {/* container 1 start */}

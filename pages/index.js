@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import Section1 from "../layouts/home_layouts/Section1";
 import Section2 from "../layouts/home_layouts/Section2";
@@ -7,7 +8,7 @@ import Section4 from "../layouts/home_layouts/Section4";
 import Section5 from "../layouts/home_layouts/Section5";
 import Section6 from "../layouts/home_layouts/Section6";
 
-const Home = ({ data }) => {
+const Home = () => {
   return (
     <div className="w-full bg-[#ffffff]">
       <Head>
@@ -24,27 +25,9 @@ const Home = ({ data }) => {
         <Section5 />
         <Section6 />
       </main>
+      <Footer />
     </div>
   );
-};
-
-export const getServerSideProps = async () => {
-  const data = ["nahid", "shariar"];
-
-  if (!data) {
-    return {
-      redirect: {
-        destination: "/join",
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {
-      data: data,
-    },
-  };
 };
 
 export default Home;

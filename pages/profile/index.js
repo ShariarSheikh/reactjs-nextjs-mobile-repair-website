@@ -1,51 +1,68 @@
+import axios from "axios";
 import Head from "next/head";
+import dynamic from "next/dynamic";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import Navigation from "../../layouts/profile_layouts/Navigation";
+import { useEffect, useState } from "react";
+import Cookies from "universal-cookie";
+import { useSelector } from "react-redux";
+import { userProfileNavigation } from "../../redux/profileNavigationSlice/profileNavigationSlice";
 
-const Profile = () => {
+const About = dynamic(() => import("../../layouts/profile_layouts/About"));
+const Account = dynamic(() => import("../../layouts/profile_layouts/Account"));
+
+const Profile = ({ user }) => {
+  const { state } = useSelector(userProfileNavigation);
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    user && setData(user?.data);
+  }, [user]);
+
   return (
     <div>
       <Head>
-        <title>Profile - </title>
+        <title>{data?.name} - MobileR </title>
         <meta name="description" content="chat application" />
       </Head>
+      <Header />
 
-      <main className="w-full">
-        <div className="max-w-[1366px] min-h-screen m-auto"></div>
+      <main className="w-full min-h-[60vh]">
+        <div className="max-w-[1280px] w-full h-auto m-auto">
+          <Navigation />
+          {state === "about" && <About user={user?.data} />}
+          {state === "account" && <Account />}
+        </div>
       </main>
+      <Footer />
     </div>
   );
 };
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const { u } = context.query;
-//   const uid: string = u;
+export const getServerSideProps = async (context) => {
+  const cookies = new Cookies(context.req.headers.cookie);
+  const token = cookies.get("u").token;
 
-//   if (!uid) {
-//     return {
-//       redirect: {
-//         destination: "/",
-//         permanent: false,
-//       },
-//     };
-//   }
+  const userFetch = await axios(process.env.NEXT_PUBLIC_FETCH_USER_DATA, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
-//   const docRef = doc(db, "users", uid);
-//   const docSnap = await getDoc(docRef);
+  const user = await userFetch?.data?.user;
 
-//   const userData = docSnap.data();
+  if (!user) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
-//   const data = JSON.stringify(userData);
-
-//   if (!data) {
-//     return {
-//       redirect: {
-//         destination: "/",
-//         permanent: false,
-//       },
-//     };
-//   }
-
-//   return {
-//     props: { data }, // will be passed to the page component as props
-//   };
-// };
+  return {
+    props: { user },
+  };
+};
 export default Profile;

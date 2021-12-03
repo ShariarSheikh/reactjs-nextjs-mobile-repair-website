@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import profileNavigationSlice from "./profileNavigationSlice/profileNavigationSlice";
 //repair device slice import
 import createRepairDeviceSlice from "./repairDevicesSlice/createRepairDeviceSlice";
 import repairDevicesDeleteSlice from "./repairDevicesSlice/repairDevicesDeleteSlice";
@@ -18,6 +19,8 @@ import modelSlice from "./userSlice/userSlice";
 
 export const store = configureStore({
   reducer: {
+    // user Profile Navigation
+    userProfileNavigation: profileNavigationSlice,
     joinModal: modelSlice,
     //repair device action start
     repairDevicesData: repairDevicesSlice,

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { allBrands } from "../../products";
 
@@ -17,10 +18,11 @@ const Section2 = () => {
       className="w-full 2xl:max-w-7xl xl:max-w-7xl mt-5 px-6 2xl:px-0 lg:w-full flex-col bg-white m-auto flex 2xl:flex-row items-center shadow-sm rounded-md 2xl:bg-indigo-100"
     >
       {/* left side */}
-      <div className="2xl:w-2/4 w-full 2xl:h-96 h-52 relative flex items-center justify-center flex-col self-center">
-        <img
+      <div className="2xl:w-2/4 w-full 2xl:h-96 h-52 relative flex items-center justify-center flex-col self-center rounded-2xl overflow-hidden">
+        <Image
           className="absolute top-0 bottom-0 w-full h-full object-cover"
-          src="https://images.unsplash.com/photo-1576613109753-27804de2cba8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
+          layout="fill"
+          src="https://images.unsplash.com/photo-1620283085439-39620a1e21c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
           alt="personRepairing"
         />
         <div className="flex items-center justify-center 4 z-10 w-full px-8">

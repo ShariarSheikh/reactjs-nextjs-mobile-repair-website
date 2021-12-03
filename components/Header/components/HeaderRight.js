@@ -68,8 +68,6 @@ const HeaderRight = () => {
             <div className="ml-4 cursor-pointer flex flex-row items-center">
               <DropdownProfileMenu
                 img={user?.profileImg}
-                email={user?.email}
-                isAdmin={user?.isAdmin}
                 name={user?.name}
               />
             </div>

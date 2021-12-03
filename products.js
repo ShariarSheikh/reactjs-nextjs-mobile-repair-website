@@ -200,7 +200,7 @@ export const whyUsCart = [
   {
     id: 1,
     title: "Premium Repair",
-    photo: 'images/whyus/premium.png',
+    photo: "images/whyus/premium.png",
     description: "lorem ipsum dolor lorem ipsum",
   },
   {
@@ -242,41 +242,53 @@ export const totalServicesList = [
     device: "Apple",
     description: "lorem ipsum dolor lorem ipsum",
     category: "apple",
+    photo:
+      "https://images.unsplash.com/photo-1591337676887-a217a6970a8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
   },
   {
     id: 2,
     device: "Samsung",
     description: "lorem ipsum dolor lorem ipsum",
     category: "samsung",
+    photo:
+      "https://images.unsplash.com/photo-1581993192008-63e896f4f744?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1637&q=80",
   },
   {
     id: 3,
     device: "Redmi",
     description: "lorem ipsum dolor lorem ipsum",
     category: "redmi",
+    photo:
+      "https://images.unsplash.com/photo-1568171284620-57dc85d9f210?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
   },
   {
     id: 4,
     device: "Nokia",
     description: "lorem ipsum dolor lorem ipsum",
     category: "nokia",
+    photo:
+      "https://images.unsplash.com/photo-1568706407142-cafe0c91e5a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1041&q=80",
   },
   {
     id: 5,
     device: "Huawei",
     description: "lorem ipsum dolor lorem ipsum",
     category: "huawei",
+    photo:
+      "https://images.unsplash.com/photo-1546706887-a24528987a75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
   },
   {
     id: 6,
     device: "Asus",
     description: "lorem ipsum dolor lorem ipsum",
     category: "asus",
+    photo:
+      "https://images.unsplash.com/photo-1620368523635-df9d83338fc1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
   {
     id: 7,
-    device: "Tools",
+    device: "See All",
     description: "lorem ipsum dolor lorem ipsum",
-    category: "tools",
+    category: "all",
   },
 ];

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { FaRegEye } from "react-icons/fa";
 import {
   closeModal,
   joinModal,
@@ -14,6 +15,7 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passType, setPassType] = useState(true);
 
   const dispatch = useDispatch();
   //onsubmit
@@ -56,16 +58,20 @@ const Login = () => {
           required
         />
       </div>
-      <div className="flex flex-col mb-4">
+      <div className="flex flex-col mb-4 relative">
         <label htmlFor="Password">Password</label>
         <input
           className="outline-none bg-blue-50 py-2 pl-2 text-gray-700"
-          type="password"
+          type={passType === false ? "text" : "password"}
           placeholder="Enter your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           minLength={6}
           required
+        />
+        <FaRegEye
+          onClick={() => setPassType(!passType)}
+          className="absolute right-5 top-8 w-6 h-6 text-gray-400 cursor-pointer"
         />
       </div>
 

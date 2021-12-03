@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { FaRegEye } from "react-icons/fa";
 import {
   closeModal,
   joinModal,
@@ -15,6 +16,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState();
+  const [passType, setPassType] = useState(true);
 
   const dispatch = useDispatch();
   //onsubmit
@@ -45,7 +47,9 @@ const SignUp = () => {
 
   return (
     <form onSubmit={onSubmit} className="w-full max-w-[360px] m-auto mt-9 pb-8">
-      {loginUser.status === "rejected" && <p className="text-red-500 text-sm">{loginUser.error}</p>}
+      {loginUser.status === "rejected" && (
+        <p className="text-red-500 text-sm">{loginUser.error}</p>
+      )}
 
       <div className="flex flex-col mb-4">
         <label htmlFor="Name">Name</label>
@@ -80,16 +84,20 @@ const SignUp = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div className="flex flex-col mb-4">
+      <div className="flex flex-col mb-4 relative">
         <label htmlFor="Password">Password</label>
         <input
           className="outline-none bg-blue-50 py-2 pl-2 text-gray-700"
-          type="password"
+          type={passType === false ? "text" : "password"}
           placeholder="Enter your password"
           value={password}
           minLength={6}
           required
           onChange={(e) => setPassword(e.target.value)}
+        />
+        <FaRegEye
+          onClick={() => setPassType(!passType)}
+          className="absolute right-5 top-8 w-6 h-6 text-gray-400 cursor-pointer"
         />
       </div>
 

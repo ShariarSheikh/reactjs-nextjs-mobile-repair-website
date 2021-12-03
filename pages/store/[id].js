@@ -6,6 +6,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import AboutStore from "../../layouts/single_store_layouts/AboutStore";
+import Footer from "../../components/Footer/Footer";
 
 const Store = ({ store }) => {
   const { id } = useRouter().query;
@@ -33,7 +34,7 @@ const Store = ({ store }) => {
       <main className="min-h-screen max-w-[1366px] m-auto">
         <section className="w-full">
           {/* header container */}
-          <header className="relative w-full h-96">
+          <header className="relative w-full h-96 rounded-2xl overflow-hidden mt-6">
             <Image
               className="absolute w-full h-full"
               layout="fill"
@@ -81,14 +82,13 @@ const Store = ({ store }) => {
           </div>
         </section>
       </main>
+      <Footer/>
     </div>
   );
 };
 
 export const getStaticPaths = async () => {
-  const stores = await axios.get(
-    "https://stormy-woodland-67379.herokuapp.com/api/service-stores/get"
-  );
+  const stores = await axios.get(process.env.NEXT_PUBLIC_GET_SERVICES_STORE);
 
   const { servicesStore } = await stores?.data;
 
@@ -106,7 +106,7 @@ export const getStaticProps = async (context) => {
   const { id } = context.params;
 
   const getStore = await axios.get(
-    `https://stormy-woodland-67379.herokuapp.com/api/service-stores/getOne/${id}`
+    `${process.env.NEXT_PUBLIC_GET_SERVICES_STORE_ONE}${id}`
   );
 
   const { store } = await getStore?.data;

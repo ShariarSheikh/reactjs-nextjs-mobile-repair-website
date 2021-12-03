@@ -4,10 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { totalServicesList } from "../../products";
-import Cookies from "universal-cookie";
 import { logOutUser } from "../../redux/userSlice/userSlice";
-
-const cookies = new Cookies();
 
 export const DropdownServices = ({ setDropdown }) => {
   return (
@@ -17,8 +14,8 @@ export const DropdownServices = ({ setDropdown }) => {
           {totalServicesList.map((service) => (
             <Link
               href={
-                service.category === "tools"
-                  ? `/gadgets`
+                service.category === "all"
+                  ? `/services`
                   : `/services/` + service.category
               }
               key={service.id}
@@ -45,7 +42,7 @@ export const DropdownServices = ({ setDropdown }) => {
   );
 };
 
-export const DropdownProfileMenu = ({ img, email, isAdmin, name }) => {
+export const DropdownProfileMenu = ({ img,name }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -56,24 +53,10 @@ export const DropdownProfileMenu = ({ img, email, isAdmin, name }) => {
   }, [isOpenMenu]);
 
   const clickHandler = (text) => {
-    if (process.env.REACT_APP_ADMIN_EMAIL === email) {
-      //admin login
-      text === "Profile" && router.push("/admin");
-      text === "Setting" && router.push("/admin/setting");
-      text === "Logout" && dispatch(removeUser());
-      text === "Logout" && router.push("/");
-    } else if (isAdmin === false) {
-      //if normal user login
-      text === "Profile" && router.push("/user");
-      text === "Setting" && router.push("/user/setting");
-      text === "Logout" && dispatch(removeUser());
-      text === "Logout" && router.push("/");
-    } else if (email) {
-      text === "Profile" && router.push("/user");
-      text === "Setting" && router.push("/user/setting");
-      text === "Logout" && dispatch(logOutUser());
-      text === "Logout" && router.push("/");
-    }
+    text === "Profile" && router.push("/profile");
+    text === "Setting" && router.push("/profile/setting");
+    text === "Logout" && dispatch(logOutUser());
+
     setIsOpenMenu(false);
   };
   return (
@@ -99,7 +82,7 @@ export const DropdownProfileMenu = ({ img, email, isAdmin, name }) => {
       )}
 
       <ul
-        className="w-52 rounded-sm text-black absolute right-0 top-14 shadow-lg bg-white pt-2 px-3"
+        className="w-52 rounded-sm text-black absolute right-0 top-10 shadow-lg bg-white pt-2 px-3"
         hidden={!isOpenMenu}
         onClick={(e) => e.stopPropagation()}
       >

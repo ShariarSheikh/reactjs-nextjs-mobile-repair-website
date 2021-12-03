@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import router from "next/router";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
@@ -8,10 +9,7 @@ export const loginUser = createAsyncThunk(
   "login/loginUser",
   async (user, { rejectWithValue }) => {
     try {
-      const login = await axios.post(
-        "https://stormy-woodland-67379.herokuapp.com/auth/user/login",
-        user
-      );
+      const login = await axios.post(process.env.NEXT_PUBLIC_LOGIN, user);
 
       if (login?.data) {
         const u = {
@@ -23,7 +21,7 @@ export const loginUser = createAsyncThunk(
         cookies.set("u", u, { path: "/" });
       }
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -32,10 +30,7 @@ export const signUpUser = createAsyncThunk(
   "signup/signUpUser",
   async (user, { rejectWithValue }) => {
     try {
-      const signup = await axios.post(
-        "https://stormy-woodland-67379.herokuapp.com/auth/user/register",
-        user
-      );
+      const signup = await axios.post(process.env.NEXT_PUBLIC_REGISTER, user);
       if (signup?.data) {
         const u = {
           name: signup?.data?.name,
@@ -46,7 +41,7 @@ export const signUpUser = createAsyncThunk(
         cookies.set("u", u, { path: "/" });
       }
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -74,6 +69,7 @@ export const modalSlice = createSlice({
     logOutUser: (state, action) => {
       cookies.remove("u");
       state.status = "";
+      router.replace("/");
     },
   },
   extraReducers: {

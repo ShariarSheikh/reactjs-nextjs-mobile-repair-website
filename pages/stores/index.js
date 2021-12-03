@@ -1,5 +1,6 @@
 import axios from "axios";
 import Head from "next/head";
+import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/index";
 import LocationsFeed from "../../layouts/stores_layouts/LocationsFeed";
@@ -23,14 +24,13 @@ const Stores = ({ data }) => {
           <LocationsFeed data={data} />
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
 
 export const getStaticProps = async () => {
-  const stores = await axios.get(
-    "https://stormy-woodland-67379.herokuapp.com/api/service-stores/get"
-  );
+  const stores = await axios.get(process.env.NEXT_PUBLIC_GET_SERVICES_STORE);
 
   const { servicesStore } = await stores?.data;
 

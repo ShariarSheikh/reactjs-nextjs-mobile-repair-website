@@ -4,7 +4,9 @@ import axios from "axios";
 export const servicesStoreFetch = createAsyncThunk(
   "servicesStore/servicesStoreFetch",
   async () => {
-    const response = await axios.get("https://stormy-woodland-67379.herokuapp.com/api/service-stores/get");
+    const response = await axios.get(
+      "https://stormy-woodland-67379.herokuapp.com/api/service-stores/get"
+    );
     return response.data.servicesStore;
   }
 );
@@ -12,7 +14,7 @@ export const servicesStoreFetch = createAsyncThunk(
 export const servicesStoreSlice = createSlice({
   name: "repairDevices",
   initialState: {
-    servicesStore: [],
+    servicesStoreData: [],
     status: null,
     error: null,
   },
@@ -24,12 +26,14 @@ export const servicesStoreSlice = createSlice({
     },
     [servicesStoreFetch.fulfilled]: (state, action) => {
       state.status = "success";
-      state.servicesStore = action.payload;
+      state.servicesStoreData = action.payload;
     },
     [servicesStoreFetch.rejected]: (state, action) => {
       state.status = "rejected";
     },
   },
 });
+
+export const servicesStore = (state) => state.servicesStore;
 
 export default servicesStoreSlice.reducer;

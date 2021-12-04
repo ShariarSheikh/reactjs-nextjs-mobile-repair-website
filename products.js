@@ -292,3 +292,58 @@ export const totalServicesList = [
     category: "all",
   },
 ];
+
+export const repairProblemsList = [
+  {
+    id: 1,
+    problem: "Display Assembly",
+  },
+  {
+    id: 2,
+    problem: "Antenna Cover",
+  },
+  {
+    id: 3,
+    problem: "Battery",
+  },
+  {
+    id: 4,
+    problem: "Camera",
+  },
+  {
+    id: 5,
+    problem: "Case",
+  },
+  {
+    id: 6,
+    problem: "Communications Board",
+  },
+  {
+    id: 7,
+    problem: "Front Bezel",
+  },
+  {
+    id: 8,
+    problem: "Headphone Jack",
+  },
+  {
+    id: 9,
+    problem: "Logic Board",
+  },
+  {
+    id: 10,
+    problem: "Rear Panel",
+  },
+  {
+    id: 11,
+    problem: "SIM Card",
+  },
+  {
+    id: 12,
+    problem: "MultiProblem",
+  },
+  {
+    id: 13,
+    problem: "Others",
+  },
+];

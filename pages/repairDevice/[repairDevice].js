@@ -1,9 +1,6 @@
 import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
 import OrderRepair from "../../layouts/repair_device_layouts/OrderRepair";
 
 const Index = ({ data }) => {
@@ -14,7 +11,6 @@ const Index = ({ data }) => {
         <title>Repair - {data?.device}</title>
         <meta name="description" content="chat application" />
       </Head>
-      <Header />
 
       <main className="min-h-[50vh] w-full">
         <section className="flex flex-col md:flex-row w-full max-w-[1024px] m-auto h-auto mt-10 bg-gray-50 p-5">
@@ -31,7 +27,6 @@ const Index = ({ data }) => {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };

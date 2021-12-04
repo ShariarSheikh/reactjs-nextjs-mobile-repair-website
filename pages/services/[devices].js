@@ -2,9 +2,6 @@ import axios from "axios";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { AiOutlineSearch } from "react-icons/ai";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import Modal from "../../components/Modal/index";
 import { totalServicesList } from "../../products";
 import RepairDevicesCart from "../../utils/RepairDevicesCart/RepairDevicesCart";
 
@@ -17,8 +14,6 @@ const Devices = ({ data }) => {
         <title>Repair - {devices}</title>
         <meta name="description" content="chat application" />
       </Head>
-      <Header />
-      <Modal />
 
       <main className="w-full min-h-[50vh]">
         <div className="relative w-full max-w-7xl m-auto">
@@ -50,7 +45,6 @@ const Devices = ({ data }) => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

@@ -1,8 +1,5 @@
 import axios from "axios";
 import Head from "next/head";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import Modal from "../../components/Modal/index";
 import LocationsFeed from "../../layouts/stores_layouts/LocationsFeed";
 import StoresHero from "../../layouts/stores_layouts/StoresHero";
 
@@ -13,9 +10,6 @@ const Stores = ({ data }) => {
         <title>Stores Repair Mobiles</title>
         <meta name="description" content="chat application" />
       </Head>
-      <Header />
-      <Modal />
-
       <main className="w-full min-h-screen">
         <div
           className={`relative w-full bg-gradient-to-t from-black via-blue-900 to-transparent pb-11`}
@@ -24,7 +18,6 @@ const Stores = ({ data }) => {
           <LocationsFeed data={data} />
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

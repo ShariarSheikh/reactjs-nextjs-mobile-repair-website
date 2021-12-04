@@ -1,8 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Header from "../../components/Header/Header";
-import Modal from "../../components/Modal/index";
 
 const Index = () => {
   const router = useRouter();
@@ -14,8 +12,6 @@ const Index = () => {
         <title>Search Store - {store && store}</title>
         <meta name="description" content="chat application" />
       </Head>
-      <Header />
-      <Modal />
 
       <main className="w-full min-h-[80vh] flex justify-center items-center">
         <div className="relative w-full u-p-h flex flex-col justify-center items-center">

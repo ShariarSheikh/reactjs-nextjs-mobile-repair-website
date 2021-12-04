@@ -1,12 +1,10 @@
 import Head from "next/head";
-import Header from "../../components/Header/Header";
-import Modal from "../../components/Modal/index";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import AboutStore from "../../layouts/single_store_layouts/AboutStore";
-import Footer from "../../components/Footer/Footer";
+
 
 const Store = ({ store }) => {
   const { id } = useRouter().query;
@@ -28,8 +26,6 @@ const Store = ({ store }) => {
         <title>Store - {store?.locationName} Repair Mobiles</title>
         <meta id="description" content="chat application" />
       </Head>
-      <Header />
-      <Modal />
 
       <main className="min-h-screen max-w-[1366px] m-auto">
         <section className="w-full">
@@ -82,7 +78,6 @@ const Store = ({ store }) => {
           </div>
         </section>
       </main>
-      <Footer/>
     </div>
   );
 };

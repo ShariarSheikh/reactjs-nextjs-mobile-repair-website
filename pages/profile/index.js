@@ -1,8 +1,6 @@
 import axios from "axios";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import Navigation from "../../layouts/profile_layouts/Navigation";
 import { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
@@ -26,7 +24,6 @@ const Profile = ({ user }) => {
         <title>{data?.name} - MobileR </title>
         <meta name="description" content="chat application" />
       </Head>
-      <Header />
 
       <main className="w-full min-h-[60vh]">
         <div className="max-w-[1280px] w-full h-auto m-auto">
@@ -35,7 +32,6 @@ const Profile = ({ user }) => {
           {state === "account" && <Account />}
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

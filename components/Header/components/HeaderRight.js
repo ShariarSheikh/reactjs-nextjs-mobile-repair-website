@@ -17,8 +17,12 @@ import {
   DropdownCart,
   DropdownProfileMenu,
 } from "../../../utils/Dropdown/Index";
+import dynamic from "next/dynamic";
 import { servicesStore } from "../../../redux/servicesStoreSlice/servicesStoreSlice";
-import SearchStoreDropdown from "../../../utils/SearchStoreDropdown/Index";
+
+const SearchStoreDropdown = dynamic(() =>
+  import("../../../utils/SearchStoreDropdown/Index")
+);
 
 const cookies = new Cookies();
 
@@ -41,7 +45,7 @@ const HeaderRight = () => {
       const isValid = servicesStoreData.find(
         (x) => x.locationName === search.toUpperCase()
       );
-
+      setSearch("");
       isValid && router.push(`/store/${isValid?._id}`);
       !isValid && alert(`Opp Sorry ${search} Not Exists`);
     }
@@ -68,6 +72,7 @@ const HeaderRight = () => {
             <input
               className="pl-5 ml-4 w-full bg-transparent pt-2 pb-2 focus:outline-none text-black text-sm"
               type="text"
+              value={search}
               onChange={(e) => filterStore(e.target.value)}
               onKeyDown={(e) => storeSearch(e)}
               placeholder="Search Your Store"

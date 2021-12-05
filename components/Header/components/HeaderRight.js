@@ -17,22 +17,42 @@ import {
   DropdownCart,
   DropdownProfileMenu,
 } from "../../../utils/Dropdown/Index";
+import { servicesStore } from "../../../redux/servicesStoreSlice/servicesStoreSlice";
+import SearchStoreDropdown from "../../../utils/SearchStoreDropdown/Index";
 
 const cookies = new Cookies();
 
 //header right component
 const HeaderRight = () => {
+  const { servicesStoreData } = useSelector(servicesStore);
   const loginUser = useSelector(joinModal);
   const [user, setUser] = useState({});
   const [search, setSearch] = useState("");
+  const [searchResult, setSearchResult] = useState({});
   const router = useRouter();
   const dispatch = useDispatch();
 
+  const filterStore = (value) => {
+    setSearch((prevState) => (prevState = value));
+  };
+
   const storeSearch = (e) => {
     if (e.keyCode === 13) {
-      search && router.push(`/stores?store=${search}`);
+      const isValid = servicesStoreData.find(
+        (x) => x.locationName === search.toUpperCase()
+      );
+
+      isValid && router.push(`/store/${isValid?._id}`);
+      !isValid && alert(`Opp Sorry ${search} Not Exists`);
     }
   };
+
+  useEffect(() => {
+    const findSearchResult = servicesStoreData?.find(
+      (x) => x.locationName === search.toUpperCase()
+    );
+    setSearchResult(findSearchResult);
+  }, [search, servicesStoreData]);
 
   useEffect(() => {
     setUser(cookies.get("u"));
@@ -48,10 +68,13 @@ const HeaderRight = () => {
             <input
               className="pl-5 ml-4 w-full bg-transparent pt-2 pb-2 focus:outline-none text-black text-sm"
               type="text"
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => filterStore(e.target.value)}
               onKeyDown={(e) => storeSearch(e)}
               placeholder="Search Your Store"
             />
+            {searchResult && (
+              <SearchStoreDropdown data={searchResult} setSearch={setSearch} />
+            )}
           </div>
         </div>
 
@@ -66,10 +89,7 @@ const HeaderRight = () => {
               <AiOutlineBell className="text-black mr-1 w-6 h-6 cursor-pointer text-lg" />
             </div>
             <div className="ml-4 cursor-pointer flex flex-row items-center">
-              <DropdownProfileMenu
-                img={user?.profileImg}
-                name={user?.name}
-              />
+              <DropdownProfileMenu img={user?.profileImg} name={user?.name} />
             </div>
           </>
         ) : (

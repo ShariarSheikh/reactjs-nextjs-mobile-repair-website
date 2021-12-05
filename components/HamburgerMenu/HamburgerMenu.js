@@ -3,11 +3,14 @@ import { AiOutlineBell, AiOutlineShoppingCart } from "react-icons/ai";
 import { useRouter } from "next/router";
 import { totalServicesList } from "../../products";
 import { DropdownCart, DropdownProfileMenu } from "../../utils/Dropdown/Index";
+import { useDispatch } from "react-redux";
+import { modalLogin, modalSignup } from "../../redux/userSlice/userSlice";
 
 const HamburgerMenu = ({ openMenu }) => {
   const [openService, setOpenService] = useState(false);
 
   const router = useRouter();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (openMenu) {
@@ -29,7 +32,7 @@ const HamburgerMenu = ({ openMenu }) => {
     <div
       className={`relative w-full nav_bg ${
         openMenu ? `min-h-screen h-auto block` : `h-0 hidden`
-      } z-50 transition delay-150 duration-300 ease-in-out`}
+      } z-50 transition delay-150 duration-300 ease-in-out bg-white`}
     >
       <div
         className={`relative w-full overflow-y-scroll ${
@@ -83,23 +86,17 @@ const HamburgerMenu = ({ openMenu }) => {
           >
             Contact Us
           </li>
-          <li
-            className="text-3xl cursor-pointer mb-6 text-black uppercase font-semibold font-roboto"
-            onClick={() => handleLink("support")}
-          >
-            Support
-          </li>
 
           {!false && (
             <>
               <div
-                onClick={() => history.push("/login")}
+                onClick={() => dispatch(modalLogin())}
                 className="cursor-pointer  text-3xl text-black rounded uppercase font-semibold font-roboto mb-6"
               >
                 LogIn
               </div>
               <div
-                onClick={() => history.push("/signup")}
+                onClick={() => dispatch(modalSignup())}
                 className=" cursor-pointer text-3xl text-black uppercase font-semibold font-roboto"
               >
                 Register
@@ -125,7 +122,7 @@ const ServiceList = ({ openService }) => {
 
   return (
     <ul
-      className={`w-full bg-gray-700 transition transform duration-200 overflow-hidden ${
+      className={`w-full bg-gray-100 transition transform duration-200 overflow-hidden ${
         openService ? "h-auto" : "h-0"
       }`}
     >

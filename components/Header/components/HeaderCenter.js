@@ -36,11 +36,6 @@ const HeaderCenter = () => {
             Contact Us
           </li>
         </Link>
-        <Link href="/support" passHref>
-          <li className="font-medium mr-5 text-base text-black cursor-pointer">
-            Support
-          </li>
-        </Link>
       </ul>
     </div>
   );

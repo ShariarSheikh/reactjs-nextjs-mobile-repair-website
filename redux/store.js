@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import gadgetsModalSlice from "./gadgetsModalSlice/gadgetsModalSlice";
 import profileNavigationSlice from "./profileNavigationSlice/profileNavigationSlice";
 //repair device slice import
 import createRepairDeviceSlice from "./repairDevicesSlice/createRepairDeviceSlice";
@@ -19,6 +20,8 @@ import modelSlice from "./userSlice/userSlice";
 
 export const store = configureStore({
   reducer: {
+    //gadgets modal
+    gadgetsModal: gadgetsModalSlice,
     // user Profile Navigation
     userProfileNavigation: profileNavigationSlice,
     joinModal: modelSlice,

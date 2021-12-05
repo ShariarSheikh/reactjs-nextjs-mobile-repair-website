@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { gadgets } from "../../products";
 import GadgetsSlider from "../../utils/GadgetsSlider/GadgetsSlider";
 
@@ -13,7 +14,9 @@ const Section4 = () => {
           className="text-sm text-gray-700 hover:text-blue-300 cursor-pointer
          ml-5 hover:underline pr-5"
         >
-          See all
+          <Link href="/gadgets" password>
+            <a> See all</a>
+          </Link>
         </p>
       </div>
 

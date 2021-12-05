@@ -76,6 +76,12 @@ const HamburgerMenu = ({ openMenu }) => {
           <ServiceList openService={openService} />
           <li
             className="text-3xl cursor-pointer mb-6 text-black uppercase font-semibold font-roboto"
+            onClick={() => handleLink("gadgets")}
+          >
+            Gadgets
+          </li>
+          <li
+            className="text-3xl cursor-pointer mb-6 text-black uppercase font-semibold font-roboto"
             onClick={() => handleLink("aboutus")}
           >
             About Us

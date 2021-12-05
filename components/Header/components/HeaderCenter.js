@@ -26,6 +26,11 @@ const HeaderCenter = () => {
           </li>
           {dropdown && <DropdownServices setDropdown={setDropdown} />}
         </div>
+        <Link href="/gadgets" passHref>
+          <li className="font-medium mr-5 text-base text-black cursor-pointer">
+            Gadgets
+          </li>
+        </Link>
         <Link href="/aboutus" passHref>
           <li className="font-medium mr-5 text-base text-black cursor-pointer">
             About Us

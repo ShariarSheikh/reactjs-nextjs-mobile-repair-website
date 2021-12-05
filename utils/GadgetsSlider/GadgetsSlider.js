@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import SwiperCore, { Pagination } from "swiper/core";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Image from "next/image";
 import "swiper/css";
 
 SwiperCore.use([Pagination]);
@@ -44,8 +45,10 @@ const GadgetsSlider = ({ gadgets }) => {
         {gadgets.map((gd) => (
           <SwiperSlide key={gd.id}>
             <div className="h-full w-full bg-white flex flex-col bg-transparent border items-center justify-center p-5">
-              <img
+              <Image
                 className="bg-white h-52 w-80 object-contain"
+                width={320}
+                height={208}
                 src={gd.photo}
                 alt="imgslider"
               />

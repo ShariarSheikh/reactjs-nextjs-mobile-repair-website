@@ -31,13 +31,13 @@ const GadgetsModal = () => {
       className={`${
         !modal
           ? "h-[0vh] w-[0px]"
-          : "bg-black bg-opacity-20 fixed left-0 top-0 h-[100vh] w-full z-50"
+          : "bg-black bg-opacity-20 fixed left-0 top-0 h-[100vh] w-full"
       }  overflow-hidden`}
     >
       <div
         className={`w-full ${
           modal ? "h-[85vh] mt-[15vh]" : "h-[0vh] mt-[100vh]"
-        } bg-white px-10 relative transition-all duration-200 ease-out overflow-y-scroll pb-4`}
+        } bg-white px-10 relative transition-all duration-200 overflow-y-scroll pb-4`}
       >
         <div className="w-full flex justify-end h-9 items-center pr-3 mt-3">
           <AiOutlineClose

@@ -1,12 +1,25 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { servicesStore } from "../../redux/servicesStoreSlice/servicesStoreSlice";
 
 const StoresHero = () => {
-  const [search, setSearch] = useState("");
+  const { servicesStoreData } = useSelector(servicesStore);
+  const [search, setSearch] = useState({});
   const router = useRouter();
 
+  const storeSearch = (value) => {
+    const isValid = servicesStoreData?.find(
+      (x) => x.locationName === value.toUpperCase()
+    );
+
+    isValid && setSearch(isValid);
+  };
+
   const searchHandler = () => {
-    search && router.push(`/search-store?store=${search}`);
+    search && router.push(`/store/${search._id}`);
+    !search && alert(`Opp Sorry Location Not Exists`);
+    setSearch("");
   };
   return (
     <header className="nav_bg w-full">
@@ -24,14 +37,13 @@ const StoresHero = () => {
               type="text"
               placeholder="Search your location"
               className="mr-5 pl-2 border-b mt-3 pb-2 pt-2 outline-none text-gray-500"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => storeSearch(e.target.value)}
             />
             <button
               className="mt-3 pr-5 pl-5 pt-2 pb-2 bg-indigo-600 text-white rounded "
               onClick={searchHandler}
             >
-              Find
+              Search
             </button>
           </div>
         </div>
@@ -50,6 +62,5 @@ const StoresHero = () => {
     </header>
   );
 };
-
 
 export default StoresHero;
